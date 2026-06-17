@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Prompt Injection Shield — core tests</title>
+<style>
+  body { font: 14px/1.5 ui-monospace, Consolas, monospace; padding: 1rem; }
+  #out { white-space: pre-wrap; }
+  .fail { color: #b00020; }
+  .ok { color: #0a7d20; }
+</style>
+<h1>Core tests</h1>
+<p>Serve this folder over HTTP (Chrome blocks ES-module imports from <code>file://</code>):</p>
+<pre>  python -m http.server 8000
+  # then open  http://localhost:8000/tests/test.html</pre>
+<div id="out">Running… (also see the DevTools console)</div>
+
+<script type="module">
+  // Mirror console output into the page so you don't strictly need DevTools.
+  const out = document.getElementById('out');
+  out.textContent = '';
+  const append = (cls, args) => {
+    const line = document.createElement('div');
+    if (cls) line.className = cls;
+    line.textContent = args.join(' ');
+    out.appendChild(line);
+  };
+  const origLog = console.log.bind(console);
+  const origErr = console.error.bind(console);
+  console.log = (...a) => {
+    const cls = /(\d+) passed, (\d+) failed/.test(a.join(' ')) && !/, 0 failed/.test(a.join(' ')) ? 'fail' : 'ok';
+    append(cls, a);
+    origLog(...a);
+  };
+  console.error = (...a) => {
+    append('fail', a);
+    origErr(...a);
+  };
+
+  // Importing the test module runs every assertion (it's pure, browser-safe).
+  await import('./core.test.js');
+</script>

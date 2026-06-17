@@ -1,0 +1,10 @@
+{
+  "name": "prompt-injection-shield",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Protects you and your AI assistant from hidden text and prompt-injection attacks planted in web pages.",
+  "scripts": {
+    "test": "node tests/core.test.js"
+  }
+}

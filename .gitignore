@@ -1,0 +1,16 @@
+# Dependencies (this project has none, but never commit these)
+node_modules/
+
+# Editors
+.vscode/
+.idea/
+*.code-workspace
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Packaged builds for the Chrome Web Store
+*.zip
+dist/

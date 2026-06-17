@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>Prompt Injection Shield</title>
+  </head>
+  <body>
+    <header class="bar">
+      <h1>Prompt Injection Shield</h1>
+      <button id="rescan" type="button" title="Scan this page again">Rescan</button>
+    </header>
+
+    <section id="counts" class="counts" aria-label="Findings by severity">
+      <span class="chip chip-high" data-sev="HIGH">HIGH <b id="c-high">0</b></span>
+      <span class="chip chip-med" data-sev="MEDIUM">MED <b id="c-med">0</b></span>
+      <span class="chip chip-low" data-sev="LOW">LOW <b id="c-low">0</b></span>
+    </section>
+
+    <p id="status" class="status" hidden></p>
+
+    <ul id="findings" class="findings" aria-label="Findings"></ul>
+
+    <!-- popup.js is a module; it talks to the content script via messaging. -->
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
