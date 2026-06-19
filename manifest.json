@@ -3,7 +3,7 @@
   "name": "Prompt Injection Shield",
   "version": "0.1.0",
   "description": "Protects you and your AI assistant from hidden text and prompt-injection attacks planted in web pages.",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab"],
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",

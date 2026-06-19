@@ -24,11 +24,10 @@ the tab. No information ever leaves your device.
 
 | Permission | Why it's needed |
 |---|---|
-| `activeTab` | To read and scan the page **only** for the tab you're actively using, when you invoke the extension. |
-| `scripting` | To run the local scan inside the current page. |
+| `activeTab` | To read and scan the page of the tab you're actively using when you open the extension. |
+| Host access (content script) | The scanner must be able to run on whatever page you're viewing, since hidden injection content can appear on any site. It only reads the page locally. |
 
-The extension requests no host permissions beyond the active tab and makes no network
-connections of any kind.
+The extension makes no network connections of any kind.
 
 ## Contact
 
